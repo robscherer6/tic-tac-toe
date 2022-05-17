@@ -1,4 +1,4 @@
-table {
+/* table {
   border: 2px solid black;
 }
 
@@ -10,5 +10,14 @@ td {
 
 td {
   text-align: center;
+} */
+
+.container {
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
