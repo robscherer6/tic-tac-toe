@@ -36,6 +36,11 @@ var boxClicked = (e) => {
     if (playerWins()) {
       alert(`${currentPlayer} wins!!!`)
     }
+
+    if (playersTie()) {
+      alert('TIE GAME, PLEASE HIT RESET AND TRY AGAIN.');
+    }
+
     if (currentPlayer === player1) {
       currentPlayer = player2;
     } else {
@@ -56,7 +61,7 @@ let playerWins = () => {
       return true;
     }
   }
-  if(cells[8] === currentPlayer) {
+  else if(cells[8] === currentPlayer) {
     if(cells[2] === currentPlayer && cells[5] === currentPlayer) {
       return true;
     }
@@ -64,15 +69,29 @@ let playerWins = () => {
       return true;
     }
   }
-  if(cells[1] === currentPlayer) {
+  else if(cells[1] === currentPlayer) {
     if(cells[4] === currentPlayer && cells[7] === currentPlayer) {
       return true;
     }
   }
-  if(cells[3] === currentPlayer) {
+  else if(cells[3] === currentPlayer) {
     if(cells[4] === currentPlayer && cells[5] === currentPlayer) {
       return true;
     }
+  }
+}
+
+let playersTie = () => {
+  if ((cells[0] === player1 || cells[0] === player2) &&
+  (cells[1] === player1 || cells[1] === player2) &&
+  (cells[2] === player1 || cells[2] === player2) &&
+  (cells[3] === player1 || cells[3] === player2) &&
+  (cells[4] === player1 || cells[4] === player2) &&
+  (cells[5] === player1 || cells[5] === player2) &&
+  (cells[6] === player1 || cells[6] === player2) &&
+  (cells[7] === player1 || cells[7] === player2) &&
+  (cells[8] === player1 || cells[8] === player2)) {
+    return true;
   }
 }
 
