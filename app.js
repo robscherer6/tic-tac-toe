@@ -13,6 +13,12 @@
 
 var boxes = Array.from(document.getElementsByClassName('box'));
 
+var cells = [null, null, null, null, null, null, null, null, null];
+
+var player1 = 'X';
+var player2 = 'O';
+var currentPlayer = player1;
+
 let createBoard = () => {
   boxes.forEach((box, index) => {
     box.addEventListener('click', boxClicked);
@@ -20,7 +26,17 @@ let createBoard = () => {
 }
 
 var boxClicked = (e) => {
-  console.log('Box was clicked!!');
+  let id = e.target.id;
+  console.log('id: ', id);
+  if (!cells[id]) {
+    cells[id] = currentPlayer;
+    e.target.innerText = currentPlayer;
+    if (currentPlayer === player1) {
+      currentPlayer = player2;
+    } else {
+      currentPlayer = player1;
+    }
+  }
 }
 
 createBoard();
