@@ -12,15 +12,9 @@
 // })
 
 var boxes = Array.from(document.getElementsByClassName('box'));
-var btn = document.getElementById('reset');
+var resetBtn = document.getElementById('reset');
 
-btn.onclick = () => {
-  boxes.forEach((box) => {
-    box.innerHTML = '';
-  })
-}
-
-var cells = [null, null, null, null, null, null, null, null, null];
+var cells = [];
 
 var player1 = 'X';
 var player2 = 'O';
@@ -61,7 +55,8 @@ let playerWins = () => {
     if(cells[4] === currentPlayer && cells[8] === currentPlayer) {
       return true;
     }
-  } else if(cells[8] === currentPlayer) {
+  }
+  if(cells[8] === currentPlayer) {
     if(cells[2] === currentPlayer && cells[5] === currentPlayer) {
       return true;
     }
@@ -69,6 +64,29 @@ let playerWins = () => {
       return true;
     }
   }
+  if(cells[1] === currentPlayer) {
+    if(cells[4] === currentPlayer && cells[7] === currentPlayer) {
+      return true;
+    }
+  }
+  if(cells[3] === currentPlayer) {
+    if(cells[4] === currentPlayer && cells[5] === currentPlayer) {
+      return true;
+    }
+  }
 }
 
+let reset = () => {
+  cells.forEach((cell, index) => {
+    cells[index] = null;
+  })
+  boxes.forEach((box) => {
+    box.innerText = '';
+  })
+  currentPlayer = player1;
+}
+
+resetBtn.addEventListener('click', reset)
+
+reset();
 createBoard();
