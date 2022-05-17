@@ -1,17 +1,7 @@
-function addRowHandlers() {
-  var table = document.getElementById('tableId');
-  var rows = table.getElementsByTagName('tr');
-  for (var i = 0; i < rows.length; i++) {
-    var currentRow = rows[i];
-    var createClickHandler = function (row) {
-      return function () {
-        var cell = row.getElementsByTagName('td')[0];
-        var id = cell.innerHTML;
-        id.innerText = 'X'
-      }
-    }
-    currentRow.onclick = createClickHandler(currentRow);
-  }
-}
+const table = document.getElementById('tableId');
 
-window.onload = addRowHandlers();
+
+table.addEventListener('click', (e) => {
+  const cell = e.target.closest('td');
+  cell.innerHTML = 'X';
+})
